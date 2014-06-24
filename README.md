@@ -2,6 +2,18 @@
 
 Decode streams of `\n` separated objects in parallel.
 
+# Performance
+
+The gain in speed from using a normal, single threaded decoding is:
+
+| Technique | Throughput  |
+|-----------|-------------|
+| normal    | 27.30 MB/s  |
+| parajson  | 115.07 MB/s |
+
+Using a 386MB file of 1'302'811 `s3.Key` in JSON, on my 8 cores
+MBPr 2012.
+
 # Usage
 
 This package implements a simple pipeline to decode JSON objects in
@@ -39,14 +51,6 @@ parajson.SetUnmarshal(func(data []byte, v interface{}) error {
 // do the decoding
 ```
 
-# Performance
-
-The gain in speed from using a normal, single threaded decoding is:
-
-| Technique | Throughput  |
-|-----------|-------------|
-| parajson  | 115.07 MB/s |
-| normal    | 27.30 MB/s  |
 
 # License
 
